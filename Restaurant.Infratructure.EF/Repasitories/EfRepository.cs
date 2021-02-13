@@ -5,44 +5,53 @@ using System.Text;
 using System.Threading.Tasks;
 using Restaurant.Core.ApplicationService.IRepository;
 using Restaurant.Core.Entities;
+using Restaurant.Infratructure.EF.DataBase;
+using System.Linq;
 
 namespace Restaurant.Infratructure.EF.Repasitories
 {
     public class EfRepository<T> : IRepository<T> where T :class,IHasIdentity
     {
-        public Task Delete(int id)
+        private RestaurantDbContext context;
+        public EfRepository(RestaurantDbContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+        }
+        public async Task Delete(int id)
+        {
+          var model = this.context.Set<T>().FirstOrDefault(x => x.Id == id);
+            this.context.Remove(model);
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return this.context.Set<T>().ToList();
         }
 
         public IQueryable<T> GetQuery()
         {
-            throw new NotImplementedException();
+            return this.context.Set<T>().AsQueryable();
         }
 
         public T GetSingel(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Set<T>().FirstOrDefault(x => x.Id == id);
         }
 
         public void Insert(T item)
         {
-            throw new NotImplementedException();
+            this.context.Add(item);
         }
 
         public Task Save()
         {
-            throw new NotImplementedException();
+            return this.context.SaveChangesAsync();
         }
 
         public T Update(T item)
         {
-            throw new NotImplementedException();
+            var model = this.context.Update(item);
+            return item;
         }
     }
 }

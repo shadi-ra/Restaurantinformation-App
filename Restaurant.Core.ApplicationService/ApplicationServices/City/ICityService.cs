@@ -6,5 +6,6 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.City
 {
     public interface ICityService
     {
+      
     }
 }
