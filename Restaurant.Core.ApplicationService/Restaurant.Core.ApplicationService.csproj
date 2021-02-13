@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ApplicationServices\" />
     <Folder Include="Dtos\" />
   </ItemGroup>
 
