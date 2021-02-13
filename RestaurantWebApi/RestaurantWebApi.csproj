@@ -25,5 +25,10 @@
     <ProjectReference Include="..\Restaurant.Infratructure.EF\Restaurant.Infratructure.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 
 </Project>
