@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurant.Infratructure.EF.DataBase
 {
-    class RestaurantDbContext
+   public class RestaurantDbContext :DbContext
     {
     }
 }
