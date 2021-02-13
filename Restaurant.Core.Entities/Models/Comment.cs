@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Restaurant.Core.Entities.Models
 {
-    class Comment
+   public class Comment :IHasIdentity
     {
+        public int Id { get; set; }
     }
 }

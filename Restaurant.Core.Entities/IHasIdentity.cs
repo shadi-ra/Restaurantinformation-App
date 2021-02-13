@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Restaurant.Core.Entities.Models
+namespace Restaurant.Core.Entities
 {
-    public class UserLogin : IHasIdentity
+   public interface IHasIdentity
     {
         public int Id { get; set; }
     }
