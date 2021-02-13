@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Restaurant.Infratructure.EF.DataBase;
+using RestaurantWebApi.Extentions;
 
 namespace RestaurantWebApi
 {
@@ -30,6 +31,7 @@ namespace RestaurantWebApi
 
             services.AddDbContext<RestaurantDbContext>(o =>
                 o.UseSqlServer(Configuration.GetConnectionString("RestaurantConnectionStrings")));
+            services.AddDependency();
             services.AddControllers();
         }
 

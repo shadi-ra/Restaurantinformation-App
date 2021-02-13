@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Restaurant.Core.ApplicationService.ApplicationServices.UserLogin
 {
-    public class UserLoginservice:IUserLoginService
+    public class UserLoginService:IUserLoginService
     {
     }
 }
