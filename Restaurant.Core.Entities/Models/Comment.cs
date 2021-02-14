@@ -4,8 +4,14 @@ using System.Text;
 
 namespace Restaurant.Core.Entities.Models
 {
-   public class Comment :IHasIdentity
+    public class Comment : IHasIdentity
     {
         public int Id { get; set; }
+        public List<Comment> Comments { get; set; }
+        public Restaurant Resturaunt { get; set; }
+        public int RestaurantId { get; set; }
+        public User User { get; set; }
+        public int UserId { get; set; }
+        public int Rate { get; set; }
     }
 }
