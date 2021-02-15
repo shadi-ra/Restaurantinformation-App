@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\City\" />
     <Folder Include="Dtos\Food\" />
     <Folder Include="Dtos\Comment\" />
+    <Folder Include="Dtos\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

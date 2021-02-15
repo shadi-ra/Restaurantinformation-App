@@ -10,6 +10,8 @@ using Restaurant.Core.ApplicationService.ApplicationServices.Food;
 using Restaurant.Core.ApplicationService.ApplicationServices.Menu;
 using Restaurant.Core.ApplicationService.ApplicationServices.User;
 using Restaurant.Core.ApplicationService.ApplicationServices.UserLogin;
+using Restaurant.Core.ApplicationService.IRepository;
+using Restaurant.Core.Entities.Models;
 using Restaurant.Infratructure.EF.Repasitories;
 
 namespace RestaurantWebApi.Extentions
@@ -36,7 +38,15 @@ namespace RestaurantWebApi.Extentions
 
         public static void AddRepositories(IServiceCollection service)
         {
-          
+            service.AddTransient<IRepository<City>, EfRepository<City>>();
+            service.AddTransient<IRepository<Restaurant.Core.Entities.Models.Restaurant>, EfRepository<Restaurant.Core.Entities.Models.Restaurant>> >();
+            service.AddTransient<IRepository<Food>, EfRepository<Food>>();
+            service.AddTransient<IRepository<Comment>, EfRepository<Comment>>();
+            service.AddTransient<IRepository<Menu>, EfRepository<Menu>>();
+            service.AddTransient<IRepository<FoodRestaurant>, EfRepository<FoodRestaurant>>();
+            service.AddTransient<IRepository<User>, EfRepository<User>>();
+            service.AddTransient<IRepository<UserLogin>, EfRepository<UserLogin>>();
+           
         }
     }
 }
