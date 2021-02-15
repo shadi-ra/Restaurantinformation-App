@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Restaurant.Core.ApplicationService.Dtos.City
 {
-  public class CityInsertInputDto
+    public class CityUpdateInputDto
     {
-        [Display(Name = "نام شهر")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [Display(Name = "Please Enter The Id")]
+        [Required(ErrorMessage = "Please Enter The {0}")]
+        public int Id { get; set; }
         public string Name { get; set; }
-
     }
 }
