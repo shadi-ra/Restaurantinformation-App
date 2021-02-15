@@ -7,6 +7,7 @@ using Restaurant.Core.ApplicationService.ApplicationServices;
 using Restaurant.Core.ApplicationService.ApplicationServices.City;
 using Restaurant.Core.ApplicationService.ApplicationServices.Comment;
 using Restaurant.Core.ApplicationService.ApplicationServices.Food;
+using Restaurant.Core.ApplicationService.ApplicationServices.FoodRestaurant;
 using Restaurant.Core.ApplicationService.ApplicationServices.Menu;
 using Restaurant.Core.ApplicationService.ApplicationServices.User;
 using Restaurant.Core.ApplicationService.ApplicationServices.UserLogin;
@@ -33,13 +34,13 @@ namespace RestaurantWebApi.Extentions
             service.AddTransient<IUserService, UserService>();
             service.AddTransient<ICommentService, CommentService>();        
             service.AddTransient<IUserLoginService, UserLoginService>();
-
+            service.AddTransient<IFoodRestaurantService, FoodRestaurantService>();
         }
 
         public static void AddRepositories(IServiceCollection service)
         {
             service.AddTransient<IRepository<City>, EfRepository<City>>();
-            service.AddTransient<IRepository<Restaurant.Core.Entities.Models.Restaurant>, EfRepository<Restaurant.Core.Entities.Models.Restaurant>> >();
+            service.AddTransient<IRepository<Restaurant.Core.Entities.Models.Restaurant>, EfRepository<Restaurant.Core.Entities.Models.Restaurant>> ();
             service.AddTransient<IRepository<Food>, EfRepository<Food>>();
             service.AddTransient<IRepository<Comment>, EfRepository<Comment>>();
             service.AddTransient<IRepository<Menu>, EfRepository<Menu>>();
