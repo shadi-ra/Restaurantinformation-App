@@ -12,6 +12,6 @@ namespace Restaurant.Core.Entities.Models
         public string RawMaterial { get; set; }
         public Menu Menue { get; set; }
         public int MenueId { get; set; }
-        public List<Restaurant> restaurants { get; set; }
+        public List<FoodRestaurant> Foodrestaurants { get; set; }
     }
 }
