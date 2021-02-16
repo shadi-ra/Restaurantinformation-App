@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Restaurant.Core.ApplicationService.Dtos.Comment;
 using Restaurant.Core.ApplicationService.IRepository;
 using System.Linq;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
 {
@@ -21,7 +21,7 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
                 UserId = input.UserId,
                 RestaurantId = input.RestaurantId,
             });
-           await repository.Save();
+            await repository.Save();
             return $"{input.comment} Was Created ";
         }
 
@@ -31,7 +31,7 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
             if (Item != null)
             {
                 repository.Delete(id);
-               await repository.Save();
+                await repository.Save();
                 return $"{id} was Deleted ";
             }
             return $"this {id} Does not Exist";
@@ -39,17 +39,44 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
 
         public Task<List<CommentOutputDto>> GetAll()
         {
-            throw new NotImplementedException();
+            var Item =  repository.GetQuery();
+            return Item.Select(x => new CommentOutputDto()
+            {
+                Id = x.Id,
+                comment = x.comment,
+                Rate = x.Rate,
+                UserId = x.UserId,
+                RestaurantId = x.RestaurantId
+            }).ToListAsync();
         }
 
-        public Task<CommentOutputDto> GetSingle(int id)
+        public async Task<CommentOutputDto> GetSingle(int id)
         {
-            throw new NotImplementedException();
+            var Item = await repository.GetQuery().Where(x => x.Id == id).FirstOrDefaultAsync();
+            return new CommentOutputDto()
+            {
+                Id = Item.Id,
+                comment = Item.comment,
+                Rate = Item.Rate,
+                UserId = Item.UserId,
+                RestaurantId = Item.RestaurantId
+            };
         }
 
-        public Task<string> Update(int id)
+        public async Task<string> Update(CommentUpdateDto input)
         {
-            throw new NotImplementedException();
+            var Item = repository.GetSingel(input.Id);
+
+            if (Item == null)
+            {
+                return "null";
+            }
+            Item.Id = input.Id;
+            Item.comment = input.comment;
+            Item.Rate = input.Rate;
+            Item.RestaurantId = input.RestaurantId;
+           await repository.Save();
+            return $"This {input.Id} Was Updated ";
         }
     }
 }

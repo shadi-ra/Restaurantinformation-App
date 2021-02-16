@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Dtos\NewFolder\" />
+    <Folder Include="Dtos\User\" />
   </ItemGroup>
 
   <ItemGroup>

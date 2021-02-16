@@ -11,7 +11,7 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
         Task<string> Create(CommentInsertInputDto input);
         Task<CommentOutputDto> GetSingle(int id);
         Task<List<CommentOutputDto>> GetAll();
-        Task<string> Update(int id);
+        Task<string> Update(CommentUpdateDto input);
         Task<string> Delete(int id);
     }
 }
