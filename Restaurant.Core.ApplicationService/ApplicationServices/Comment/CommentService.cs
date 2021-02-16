@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Restaurant.Core.ApplicationService.Dtos.Comment;
 using Restaurant.Core.ApplicationService.IRepository;
+using System.Linq;
+
 
 namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
 {
@@ -23,9 +25,16 @@ namespace Restaurant.Core.ApplicationService.ApplicationServices.Comment
             return $"{input.comment} Was Created ";
         }
 
-        public Task<string> Delete(int id)
+        public async Task<string> Delete(int id)
         {
-            throw new NotImplementedException();
+            var Item = repository.GetQuery().Where(x => x.Id == id).FirstOrDefault();
+            if (Item != null)
+            {
+                repository.Delete(id);
+               await repository.Save();
+                return $"{id} was Deleted ";
+            }
+            return $"this {id} Does not Exist";
         }
 
         public Task<List<CommentOutputDto>> GetAll()
